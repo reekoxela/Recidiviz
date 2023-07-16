@@ -1,0 +1,387 @@
+$light-color: #fff
+$accent-color: #00A1FF
+$active-color: #E00E00
+$text-color: #355362
+
+$main-size: 13px
+$offset: 32px
+$container-offset: 15px
+$content-width: 1152px
+$container-width: $content-width + ($container-offset * 2)
+
+@font-face 
+    font-family: "PublicSans"
+    src: local("PublicSans")
+    src: url("../fonts/PublicSans-Regular.ttf")
+    font-weight: 400
+    font-style: normal
+
+@font-face 
+    font-family: "LibreBaskerville"
+    src: local("LibreBaskerville")
+    src: url("../fonts/LibreBaskerville-Regular.ttf")
+    font-weight: 400
+    font-style: normal
+
+html
+    font-family: "PublicSans", sans-serif
+    box-sizing: border-box
+
+.page
+    height: 100%
+
+    
+.container
+    margin: 0 auto
+    padding: 0 $container-offset
+    max-width: $container-width
+
+.header
+    padding: 17px 0
+    &__container
+        max-width: 1152px
+        display: flex
+        align-items: center
+        justify-content: space-between
+    &_position
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 10
+        width: 100%
+    
+.nav
+    display: flex
+    align-items: center
+    padding-right: 16px
+    &__list
+        display: inline-flex
+        align-items: center
+        margin-right: 32px
+        gap: 51px
+    &__link
+        font-size: $main-size
+        color: $light-color
+        text-decoration: none
+        transition: color 0.3s ease-in-out
+        &:focus
+            outline: none
+        &:hover
+            color: $accent-color
+        &:active
+            color: $accent-color
+
+.nav__link.focus-visible
+    outline: 1px solid $active-color
+    outline-offset: 3px
+
+.grid
+    display: grid
+    column-gap: $offset
+    grid-template-columns: repeat(12, 1fr)
+
+
+.hero
+    display: flex
+    flex-direction: column
+    padding-top: 190px
+    padding-bottom: 40px
+    min-height: 776px
+    color: $light-color
+    background-image: url("../img/hero-bg.jpg")
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    &__container
+        margin-bottom: $offset
+    &__content
+        grid-column: 6 span
+    &__title
+        margin: 0
+        margin-bottom: 29px
+        font-family: LibreBaskerville
+        font-weight: 400
+        font-size: 38px
+        line-height: 44px
+        letter-spacing: 1.2px
+    &__descr
+        margin: 0
+        margin-bottom: 29px
+        font-weight: 400
+        font-size: 18px
+        line-height: 28px
+    &__bottom-container
+        margin-top: auto
+        width: 100%
+    &__subtitle
+        margin: 0
+        margin-bottom: 15px
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+    &__item
+        grid-column: 2 span
+    &__link
+        display: block
+        border-top: 1px solid rgba(255,255,255,0.6)
+        padding-top: 17px
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+        text-decoration: none
+        color: inherit
+        transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out
+        &:focus
+            outline: none
+        &:hover
+            border-color: $accent-color
+            color: $accent-color
+        &:active
+            border-color: $active-color
+            color: $active-color
+            
+
+.btn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    border: 1px solid rgba(255,255,255,0.3)
+    border-radius: 80px
+    padding: 17px 33px
+    font-size: $main-size
+    line-height: 20px
+    letter-spacing: 0.02px
+    text-decoration: none
+    text-align: center
+    color: $light-color
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out
+    &:focus
+        outline: none
+    &:hover
+        border-color: $accent-color
+        background-color: $accent-color
+    &:active
+        border-color: $active-color
+        background-color: $active-color
+
+.list-reset
+    list-style: none
+    margin: 0
+    padding: 0
+
+.steps
+    padding: 120px 0
+    background-color: $light-color
+    &__title
+        margin: 0 auto
+        margin-bottom: 57px
+        max-width: 720px
+        font-family: "LibreBaskerville"
+        font-weight: 400
+        font-size: 30px
+        line-height: 38px
+        letter-spacing: 1.2px
+        text-align: center
+    &__list
+        counter-reset: steps
+        display: flex
+        justify-content: space-between
+        margin: 0 auto
+        max-width: 758px
+    &__item
+        display: flex
+        flex-direction: column
+        align-items: center
+        &::before
+            counter-increment: steps
+            content: counter(steps)
+            display: flex
+            align-items: center
+            justify-content: center
+            margin-bottom: 28px
+            border-radius: 100%
+            width: 48px
+            height: 48px
+            font-weight: 400
+            font-size: 16px
+            line-height: 30px
+            text-align: center
+            color: $light-color
+            background: #014c48
+        &_line
+            position: relative
+            flex-grow: 1
+            &::before
+                display: none
+            &::after
+                content: ""
+                position: absolute
+                left: 0
+                top: 50%
+                margin-top: -35px
+                width: 100%
+                height: 1px
+                background: rgba(53,83,98,0.2)
+                transform: translateY(-50%)
+    &__descr
+        margin: 0
+        max-width: 142px
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+        text-align: center
+        color: rgba(53,83,98,0.8)
+
+.approach
+    &__top
+        padding: 80px
+        background-color: #f7f8f8
+    &__left
+        grid-column: 5 span
+        padding-top: 33px
+    &__right
+        display: flex
+        align-items: flex-start
+        justify-content: flex-end
+        grid-column: 7 / 6 span
+        gap: 8px
+    &__title
+        margin: 0
+        margin-bottom: 13px
+        font-weight: 400
+        font-size: 22px
+        line-height: 22px
+        color: #003331
+    &__descr
+        margin: 0
+        margin-bottom: 37px
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+        color: $text-color
+    &__btn
+        border: 1px solid rgba(53, 83, 98, 0.2);
+        padding: 16px 34px
+        color: #00413e
+    &__bottom
+        padding: 24px 0
+        background-color: $light-color
+    &__item
+        grid-column: 2 span
+    &__link
+        display: block
+        border-top: 1px solid rgba(53,83,98,0.3)
+        padding-top: 16px
+        padding-left: 32px
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+        text-decoration: none
+        color: $text-color
+        background-position: left top 15px
+        background-size: 24px 24px
+        background-repeat: no-repeat
+        transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out
+        &_ted
+            background-image: url("../img/approach-icon-1.png")
+        &_nyt
+            background-image: url("../img/approach-icon-2.png")
+        &_scoop
+            background-image: url("../img/approach-icon-3.png")
+        &_press
+            background-image: url("../img/approach-icon-4.png")
+        &_time
+            background-image: url("../img/approach-icon-5.png")
+        &_freethink
+            background-image: url("../img/approach-icon-6.png")
+        &:focus
+            outline: none
+        &:hover
+            border-color: $accent-color
+            color: $accent-color
+        &:active
+            border-color: $active-color
+            color: $active-color
+
+.info
+    position: relative
+    display: flex
+    height: 680px
+    background-color: #001414
+    &::before
+        content: ""
+        flex-shrink: 0
+        width: 287px
+        height: 100%
+        background-image: url("../img/info-1.png")
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+    &::after
+        content: ""
+        flex-shrink: 0
+        width: 287px
+        height: 100%
+        background-image: url("../img/info-2.png")
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+    &__content
+        display: flex
+        flex-grow: 1
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        border-right: 1px solid #003331
+        border-left: 1px solid #003331
+        padding: 0 82px
+        height: 100%
+    &__text
+        max-width: 542px
+    &__title
+        margin: 0 auto
+        margin-bottom: 21px
+        font-weight: 400
+        font-size: 22px
+        line-height: 22px
+        color: $light-color
+    &__descr
+        margin: 0 auto
+        font-weight: 400
+        font-size: 15px
+        line-height: 24px
+        color: #fff
+
+.partners
+    padding: 16px 0
+    &__container
+        display: flex
+        align-items: center
+        gap: 6px
+    &__list
+        display: flex
+        align-items: center
+        gap: 12px
+    &__title
+        margin: 0
+        font-weight: 400
+        font-size: 11px
+        line-height: 16px
+        letter-spacing: 0.5px
+        text-transform: uppercase
+        color: $text-color
+    &__more
+        font-weight: 400
+        font-size: 11px
+        line-height: 16px
+        letter-spacing: 0.5px
+        text-transform: uppercase
+        color: $text-color
+        text-decoration: none
+        transition: color 0.3s ease-in-out
+        &:focus
+            outline: none
+        &:hover
+            color: $accent-color
+        &:active
+            color: $accent-color
